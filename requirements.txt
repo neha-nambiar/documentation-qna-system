@@ -1,0 +1,6 @@
+firecrawl-py
+unstructured[local-inference]
+openai
+pymongo
+boto3
+python-dotenv
