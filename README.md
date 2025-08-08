@@ -37,7 +37,7 @@ Vector similarity search enables retrieval of relevant documentation chunks, whi
 
 ## Demo
 
-https://github.com/user-attachments/assets/demo.mp4
+[https://github.com/user-attachments/assets/demo.mp4](https://github.com/user-attachments/assets/e24b8461-b1b3-48b8-8071-1641ecc86113)
 
 ## Usage
 
