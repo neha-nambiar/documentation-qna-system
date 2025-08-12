@@ -4,9 +4,9 @@ A Retrieval-Augmented Generation documentation assistant for websites. Crawls do
 
 ## Implementation
 
-- Local document processing with Unstructured library
-- OpenAI embeddings (text-embedding-3-small) and generation (gpt-3.5-turbo)
-- MongoDB Atlas vector search with cosine similarity
+- Document processing with Unstructured library
+- OpenAI embeddings (text-embedding-3-large) and generation (gpt-4o-mini)
+- MongoDB Atlas vector similarity search
 - Firecrawl for web content extraction
 - AWS S3 for temporary HTML storage
 
