@@ -1,54 +1,85 @@
-# RAG Documentation System
+<div align="center">
 
-A Retrieval-Augmented Generation documentation assistant for websites. Crawls documentation content, creates vector embeddings, and provides query-based retrieval for accurate answer generation. The system retrieves relevant documentation chunks based on semantic similarity, then uses them as context for LLM answer generation.
+# 📚 DocsChat
 
-## Implementation
+[![OpenAI](https://img.shields.io/badge/OpenAI-4A4A55?style=for-the-badge&logo=openai)](https://openai.com)
+[![MongoDB](https://img.shields.io/badge/-MongoDB-13aa52?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com)
+[![Firecrawl](https://img.shields.io/badge/Firecrawl-orange?style=for-the-badge)](https://firecrawl.dev)
+[![Unstructured](https://img.shields.io/badge/Unstructured-purple?style=for-the-badge)](https://unstructured.io)
+[![AWS S3](https://img.shields.io/badge/AWS%20S3-FF9900?style=for-the-badge&logo=amazons3&logoColor=white)](https://aws.amazon.com/s3)
 
-- Document processing with Unstructured library
-- OpenAI embeddings (text-embedding-3-large) and generation (gpt-4o-mini)
-- MongoDB Atlas vector similarity search
-- Firecrawl for web content extraction
-- AWS S3 for temporary HTML storage
+*Crawl → Process → Embed → Query*
+
+</div>
+
+Transforms any website's documentation into an intelligent, conversational assistant. Simply provide a documentation URL, get answers to questions about a specific library or framework.
+
+**🎯 For developers who want to:**
+- Quickly understand new frameworks and libraries
+- Get instant answers from complex documentation
+- Save time searching through lengthy docs
+- Have contextual conversation about code
 
 ## Technology Stack
 
-- **Firecrawl**: Professional web crawling with smart content extraction
-- **Unstructured**: Local AI-powered document processing
-- **MongoDB Atlas**: Vector database with similarity search
-- **OpenAI**: Embeddings and natural language generation
-- **AWS S3**: Temporary storage for crawled content
-
-## Workflow
-
-```
-Website → Firecrawl → S3 → Unstructured → MongoDB → Interactive Q&A
-```
-
-1. **Crawl**: Extract documentation from target website
-2. **Store**: Upload raw HTML files to S3 for processing
-3. **Process**: Parse HTML and create semantic chunks locally
-4. **Embed**: Generate vector representations of content
-5. **Index**: Store in MongoDB with vector search capabilities
-6. **Query**: Interactive CLI for natural language questions
-
-Vector similarity search enables retrieval of relevant documentation chunks, which serve as context for generating accurate, source-grounded responses.
-
-**Output**: Answers are grounded in the actual documentation content and include contextual information from the crawled source material.
+- **[Firecrawl](https://firecrawl.dev)** -  LLM-Ready web crawling
+- **[Unstructured](https://unstructured.io)** - Document processing and intelligent chunking
+- **[MongoDB Atlas](https://mongodb.com/atlas)** - Vector database with similarity search
+- **[OpenAI](https://openai.com)** - Embeddings (text-embedding-3-large) and generation (gpt-4o-mini)
+- **[AWS S3](https://aws.amazon.com/s3)** - Temporary storage for crawled content
 
 ## Demo
 
 [https://github.com/user-attachments/assets/demo.mp4](https://github.com/user-attachments/assets/e24b8461-b1b3-48b8-8071-1641ecc86113)
 
-## Usage
+## Setup
 
-Run `python main.py` and provide the documentation URL when prompted. Configure crawling parameters (page limit, max depth) to control the scope of content extraction. The system will crawl the documentation site and create a documentation assistant for that specific library.
+### 1. Clone & Install
+```bash
+git clone <repository-url>
+cd rag_documentation
+pip install -r requirements.txt
+```
 
-**Examples:**
-- For LangGraph questions: `https://docs.langchain.com/langgraph-platform`
-- For React questions: `https://react.dev/learn`
-- For FastAPI questions: `https://fastapi.tiangolo.com`
+### 2. Configure Environment
+```bash
+cp .env.example .env
+# Add your API keys to .env file
+```
 
-Once processing is complete, ask questions like:
-- "How do I create a state graph in LangGraph?"
-- "What are React hooks and how do I use them?"
-- "How do I handle authentication in FastAPI?"
+### 3. Run DocsChat
+```bash
+python main.py
+```
+
+### 4. Choose Your Documentation
+**Popular examples:**
+- 🔗 **React**: `https://react.dev/learn`
+- 🔗 **FastAPI**: `https://fastapi.tiangolo.com`
+- 🔗 **LangGraph**: `https://docs.langchain.com/langgraph-platform`
+- 🔗 **Next.js**: `https://nextjs.org/docs`
+
+### 5. Start Asking Questions!
+```
+💭 "How do I create a state graph in LangGraph?"
+💭 "What are React hooks and how do I use them?"
+💭 "How do I handle authentication in FastAPI?"
+💭 "What's the difference between SSR and SSG in Next.js?"
+```
+
+## 🔧 Configuration
+
+| Parameter | Description | Default |
+|-----------|-------------|----------|
+| `limit` | Number of pages to crawl | 20 |
+| `max_depth` | Maximum crawl depth | 5 |
+| `embedding_model` | OpenAI embedding model | text-embedding-3-large |
+| `generation_model` | OpenAI chat model | gpt-4o-mini |
+
+## 📋 Requirements
+
+- Python 3.8+
+- OpenAI API key
+- MongoDB Atlas cluster
+- AWS S3 bucket
+- Firecrawl API key
